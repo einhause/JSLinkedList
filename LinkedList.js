@@ -9,6 +9,16 @@ class LinkedList {
     this.head = newNode;
     this.length++;
   }
+
+  getByIndex(index) {
+    if (index < 0 || index >= this.length) return null;
+    if (index === 0) return this.head;
+    let current = this.head;
+    for (let i = 0; i < index; i++) {
+      current = current.next;
+    }
+    return current;
+  }
 }
 
 class LinkedListNode {
@@ -16,5 +26,14 @@ class LinkedListNode {
     (this.value = value), (this.next = next);
   }
 }
+
+// Helper function for #getByIndex unit test
+LinkedList.fromValues = (...values) => {
+  const ll = new LinkedList();
+  for (let i = values.length - 1; i >= 0; i--) {
+    ll.insertAtHead(values[i]);
+  }
+  return ll;
+};
 
 module.exports = LinkedList;
