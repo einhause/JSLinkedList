@@ -1,7 +1,10 @@
 const LinkedList = require('./LinkedList');
 
-const ll = new LinkedList();
-ll.insertAtHead(10);
-ll.insertAtHead(20);
+// Manual unit testing
+const ll = LinkedList.fromValues(10, 20, 30, 40, 50);
+// ll.insertAtHead(10);
+// ll.insertAtHead(20);
 
-console.log(ll);
+ll.print();
+ll.insertAtIndex(2, 60);
+ll.print();
