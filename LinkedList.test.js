@@ -1,5 +1,7 @@
 const LinkedList = require('./LinkedList');
 
+/* Test Driven Development */
+
 // Insertion at Head
 describe('#insertAtHead', () => {
   test('it adds the element to the beginning of the list (head)', () => {
@@ -95,6 +97,42 @@ describe('#removeHead', () => {
       ll.removeHead();
       expect(ll.head.value).toBe(20);
       expect(ll.length).toBe(2);
+    });
+  });
+});
+
+describe('#removeAtIndex', () => {
+  describe('with index < 0', () => {
+    test('It does not remove anything', () => {
+      const ll = LinkedList.fromValues(10, 20);
+      ll.removeAtIndex(-1);
+      expect(ll.length).toBe(2);
+    });
+  });
+  describe('with index > list length', () => {
+    test('It does not remove anything', () => {
+      const ll = LinkedList.fromValues(10, 20);
+      ll.removeAtIndex(5);
+      expect(ll.length).toBe(2);
+    });
+  });
+  describe('with index === 0', () => {
+    test('Removal at the head', () => {
+      const ll = LinkedList.fromValues(10, 20, 30);
+      ll.removeAtIndex(0);
+      expect(ll.head.value).toBe(20);
+      expect(ll.head.next.value).toBe(30);
+      expect(ll.length).toBe(2);
+    });
+  });
+  describe('with index in middle of the list', () => {
+    test('Remove at the desired index', () => {
+      const ll = LinkedList.fromValues(10, 20, 30, 40);
+      ll.removeAtIndex(2);
+      expect(ll.head.value).toBe(10);
+      expect(ll.head.next.value).toBe(20);
+      expect(ll.head.next.next.value).toBe(40);
+      expect(ll.length).toBe(3);
     });
   });
 });
