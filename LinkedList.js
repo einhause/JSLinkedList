@@ -10,6 +10,12 @@ class LinkedList {
     this.length++;
   }
 
+  removeHead() {
+    if (this.head == null) return;
+    this.head = this.head.next;
+    this.length--;
+  }
+
   getByIndex(index) {
     if (index < 0 || index >= this.length) return null;
     if (index === 0) return this.head;
@@ -24,7 +30,7 @@ class LinkedList {
     if (index === 0) return this.insertAtHead(value);
 
     const prev = this.getByIndex(index - 1);
-    if (prev == null) return null;
+    if (prev == null) return;
 
     prev.next = new LinkedListNode(value, prev.next);
     this.length++;

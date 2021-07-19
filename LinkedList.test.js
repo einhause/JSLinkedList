@@ -78,3 +78,23 @@ describe('#insertAtIndex', () => {
     });
   });
 });
+
+// Remove at head
+describe('#removeHead', () => {
+  describe('Removing the head of an empty linked list', () => {
+    test('Should not remove anything', () => {
+      const ll = new LinkedList();
+      ll.removeHead();
+      expect(ll.head).toBe(null);
+      expect(ll.length).toBe(0);
+    });
+  });
+  describe('Removing the head', () => {
+    test('with a list length > 0', () => {
+      const ll = LinkedList.fromValues(10, 20, 30);
+      ll.removeHead();
+      expect(ll.head.value).toBe(20);
+      expect(ll.length).toBe(2);
+    });
+  });
+});
